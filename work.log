@@ -1,0 +1,50 @@
+27/3/2018
+test the functionality of fove interface2 vs fove interface
+test the functionality of fove world gaze convergence
+test the functionality of fove gaze convergence
+change when eye close the position of 3d cursor remain the same
+
+upcoming task
+1.check the in gaze system time, out gaze system time
+2.blink function usage
+CheckEyesClosed()
+
+28/3/2018
+cursor will not trace eyemotion when blinking
+get the timeSpan of looking a furniture
+
+upcoming task
+1. trigger time event by 3d cursor
+2. Debugging for API
+
+29/3/2018
+blink detection of both/left/right eyes
+
+upcoming task 
+1.simple override event system
+
+
+9/4/2018
+use deltatime to calculate the timeInterval
+make a class to store all the data with getter and setter
+drag object function with gaze control without velocity
+
+
+
+#update 
+#THE TIME INTERVAL FOR EACH FRAME VARY
+#MOVING NON PHYSICS OBJ
+#SIMPLE TIMERS
+#receiving input
+
+#fixedupdate
+#TIME INTERVAL REMAIN THE SAME
+#will sync physics engine
+
+#generic term
+#could be on every type
+#we can constraint the type use "where T: class/struct/new/monobehavior/interface"
+
+#delegate
+#pass function as parameter
+#pack functions into one if all the functions are staying in the same class
