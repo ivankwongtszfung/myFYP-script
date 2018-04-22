@@ -8,6 +8,8 @@ public class UIScript : MonoBehaviour
     Button btn;
     bool hightlight;
     public FoveInterface2 fove;
+    public GameObject myData;
+    public GazeData.GazeObject myGazeObject;
 
     // Use this for initialization
     void Start()
@@ -45,6 +47,7 @@ public class UIScript : MonoBehaviour
         {
             ExecuteEvents.Execute(btn.gameObject, pointer, ExecuteEvents.pointerUpHandler);
         }
+
     }
 
     void CursorEnter()
@@ -62,6 +65,12 @@ public class UIScript : MonoBehaviour
         hightlight = false;
         Debug.Log("highlight function called" + hightlight);
 
+    }
+
+    void showInitData()
+    {
+        GazeData.getGazeData(1);
+        
     }
 
     void ClickFunction()
