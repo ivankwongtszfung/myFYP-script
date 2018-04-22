@@ -27,6 +27,13 @@ public class Product : MonoBehaviour
         }
     }
 
+    public ProductObject GetProductById(int id) {
+        if (myApi.Status())
+            return productList.product[id];
+        else
+            return null;
+    }
+
     httpRequest myApi;
     MyProduct productList;
     bool ready = false;

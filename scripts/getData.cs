@@ -7,12 +7,13 @@ public class getData : MonoBehaviour {
     private string results;
     private string[] data;
     public GUIStyle style;
-    public WWW GET(string url)
+    public string GET(string url)
     {
 
         WWW www = new WWW(url);
         StartCoroutine(WaitForRequest(www));
-        return www;
+        
+        return www.text;
     }
 
     public WWW POST(string url, Dictionary<string, string> post, System.Action onComplete)
@@ -30,8 +31,6 @@ public class getData : MonoBehaviour {
         return www;
     }
 
-    public Vector2 scrollPosition;
-
     private IEnumerator WaitForRequest(WWW www)
     {
         yield return www;
@@ -41,16 +40,20 @@ public class getData : MonoBehaviour {
             //Debug.Log("WWW Ok!: " + www.text.Split(','));
             Debug.Log("WWW Ok!: " + www.text);
             results = www.text;
-            data=results.Split(';');
         }
         else
         {
-            Debug.Log(www.error);
+            Debug.Log("WWW not ok!: ");
         }
     }
+
+    public string getProductData(string data) {
+        return data;
+    }
+
     // Use this for initialization
     void Start () {
-        GET("http://localhost/api/getAllProduct");
+        
 
 
     }
@@ -59,28 +62,5 @@ public class getData : MonoBehaviour {
         string []value = data.Split('|');
         return value;
     }
-    void OnGUI()
-    {
-        // Make a background box
-        GUILayout.Box("Loader Menu");
-
-        // Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-        string[] i = getDataValue(data[0]);
-        //style = GUI.skin.box;
-        //GUI.skin.label = style;
-        for (int count = 0; count < i.Length; count++)
-        {
-            if (count == 2)
-            {
-                scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(100), GUILayout.Height(100));
-                GUILayout.Label(i[count]);
-                //scrollPosition = GUILayout.BeginScrollView(scrollPosition,false,true, GUILayout.Width(200), GUILayout.Height(100));
-                GUILayout.EndScrollView();
-            }
-            else {
-                GUILayout.Box(i[count]);
-            }
-            
-        }
-    }
+    
 }

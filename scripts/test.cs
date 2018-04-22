@@ -92,8 +92,6 @@ public class test : MonoBehaviour {
                 Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
 
-            
-
         }
 
 	}

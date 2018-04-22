@@ -5,13 +5,13 @@ using UnityEngine;
 public class lightTrigger : MonoBehaviour {
 
     Collider myCollider;
-    Light light;
+    Light myLight;
     // Use this for initialization
     void Start () {
-        light = GetComponent<Light>();
+        myLight = GetComponent<Light>();
         //Fetch the GameObject's Collider (make sure they have a Collider component)
         myCollider = GetComponent<Collider>();
-        light.enabled = true;
+        myLight.enabled = true;
 
 
     }
@@ -23,10 +23,10 @@ public class lightTrigger : MonoBehaviour {
         {
             
             //Output whether the Collider is a trigger type Collider or not
-            Debug.Log("Trigger On : " + myCollider.isTrigger);
+           // Debug.Log("Trigger On : " + myCollider.isTrigger);
         }
         else {
-            Debug.Log("Trigger On : " + myCollider.isTrigger);
+            //Debug.Log("Trigger On : " + myCollider.isTrigger);
         }
 
 	}

@@ -7,7 +7,6 @@ public class SampleButton : MonoBehaviour
 
     public Button buttonComponent;
     public Text nameLabel;
-    public Image iconImage;
     public Text priceText;
 
     // Button designButton;
@@ -30,7 +29,6 @@ public class SampleButton : MonoBehaviour
     {
         item = currentItem;
         nameLabel.text = item.itemName;
-        iconImage.sprite = item.icon;
         priceText.text = item.price.ToString();
         scrollList = currentScrollList;
 

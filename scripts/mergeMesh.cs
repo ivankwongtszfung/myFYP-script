@@ -25,9 +25,12 @@ public class mergeMesh : MonoBehaviour {
     {
 
         gameObject.AddComponent<MeshFilter>();
-        gameObject.AddComponent<MeshRenderer>();
         gameObject.AddComponent<MeshCollider>();
-        
+        gameObject.AddComponent<Rigidbody>();
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        if (!gameObject.GetComponent<MeshRenderer>()) {
+            gameObject.AddComponent<MeshRenderer>();
+        }
         initialPosition ip = new initialPosition(transform.position, transform.rotation, transform.localScale);
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
@@ -59,7 +62,10 @@ public class mergeMesh : MonoBehaviour {
             if (child.sharedMesh == null) continue;
             combine[index].mesh = child.sharedMesh;
             combine[index].transform = child.transform.localToWorldMatrix;
-            child.GetComponent<MeshCollider>().enabled = false;
+            if (child.GetComponent<MeshCollider>())
+                child.GetComponent<MeshCollider>().enabled = false;
+            else
+                Debug.Log(child.name+":"+child.transform.localPosition);
             myMaterials[index] = child.GetComponent<Renderer>().material;
             index++;
         }
@@ -67,8 +73,6 @@ public class mergeMesh : MonoBehaviour {
         GetComponent<MeshFilter>().mesh = new Mesh();
         GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
         GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().mesh;
-        GetComponent<MeshRenderer>().material = GameObject.Find("Heatmap").GetComponent<MeshRenderer>().material;
-
         GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().mesh;
     }
 	// Update is called once per frame

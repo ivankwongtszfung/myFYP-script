@@ -8,10 +8,21 @@ public class readPointCSV : MonoBehaviour {
     Vector4[] positions;
     Vector4[] properties;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         string filePath = Application.dataPath + "/CSV/";
-        string RealFile = filePath + filename + ".csv";
+
+
+        #if UNITY_EDITOR
+              string RealFile = filePath + filename + ".csv";
+        #elif UNITY_ANDROID
+                         string RealFile = filePath + filename + ".csv";
+        #elif UNITY_IPHONE
+                        string RealFile = filePath + filename + ".csv";
+        #else
+                TextAsset txt = (TextAsset)Resources.Load(filename, typeof(TextAsset));
+                string RealFile = txt.text;
+        #endif
         string fileData = File.ReadAllText(RealFile);
         string[] lines = fileData.Split("\n"[0]);
         positions = new Vector4[lines.Length-1];

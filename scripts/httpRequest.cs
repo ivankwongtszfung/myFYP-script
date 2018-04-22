@@ -7,7 +7,7 @@ public class httpRequest : MonoBehaviour
     public WWW httpResponse;
     private String result;
     // Use this for initialization
-    public void  GET(string url)
+    public void GET(string url)
     {
 
         httpResponse = new WWW(url);
