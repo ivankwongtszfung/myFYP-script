@@ -30,8 +30,8 @@ public class httpRequest : MonoBehaviour
         StartCoroutine(WaitForRequest(www));
     }
 
-    private IEnumerator WaitForRequest(WWW www)
-    {
+        private IEnumerator WaitForRequest(WWW www)
+        {
         yield return www;
         // check for errors
         if (www.error == null)
